@@ -23,9 +23,9 @@ grep -vw -f $listrudder $filteredserverslist > $results
 unbackedupservers=$(cat $results)
 if [ -s $results ]
 then
-        mail -s "$(hostname -s) - $(basename $0) : some servers are not configured in Rudder" system@esiee.fr <<< $(printf "%s\r\n%s\n" "Some servers are not configured in Rudder :" "" "$unbackedupservers" "" "If this is unintentionnal, please check pending or missing nodes in Rudder." "" "If this is an expected configuration, please add it to rudder servers exclusion list : ssh root@burp \"echo 'someserver' >> $norudderservers\".")
+        mail -s "$(hostname -s) - $(basename $0) : some servers are not configured in Rudder" system@entreprise.fr <<< $(printf "%s\r\n%s\n" "Some servers are not configured in Rudder :" "" "$unbackedupservers" "" "If this is unintentionnal, please check pending or missing nodes in Rudder." "" "If this is an expected configuration, please add it to rudder servers exclusion list : ssh root@burp \"echo 'someserver' >> $norudderservers\".")
     else
-            cat $results | /usr/bin/mail -s "SUCCESS : All known servers are configured in Rudder" system@esiee.fr
+            cat $results | /usr/bin/mail -s "SUCCESS : All known servers are configured in Rudder" system@entreprise.fr
         fi
 
         # delete des fichiers temp
